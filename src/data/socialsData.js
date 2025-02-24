@@ -1,5 +1,5 @@
 export const socialsData = {
-    github: 'https://github.com/enri-code',
+    // github: 'https://github.com/enri-code',
     // facebook: 'https://www.facebook.com/',
     linkedIn: 'https://www.linkedin.com/in/enri-code/',
     instagram: 'https://www.instagram.com/enri_code/',

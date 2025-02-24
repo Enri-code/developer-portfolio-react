@@ -7,9 +7,9 @@ import boy2 from '../assets/svg/testimonials/boy2.svg'
 export const testimonialsData = [
     {
         id: 1,
-        name: 'Mr. Jodi Anderson',
+        name: 'Jodi Anderson',
         title: 'Rézme Inc.',
-        text: "We had to submit our code to a marketplace to get accepted in and your name was all over the GitHub commits. Just wanted to thank you for all the help in the early days. We sold 20% of the company.",
+        text: "We submited our code to a marketplace and your name was all over the GitHub commits. Just wanted to thank you for all the help in the early days. We sold 20% of the company.",
         image: boy1
     },
     {
