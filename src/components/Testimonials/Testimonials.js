@@ -24,7 +24,7 @@ function Testimonials() {
         autoplay: true,
         margin: 3,
         loop: true,
-        autoplaySpeed: 3000,
+        autoplaySpeed: 7000,
         draggable: true,
         swipeToSlide: true,
         swipe: true,

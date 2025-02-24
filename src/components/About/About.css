@@ -44,6 +44,7 @@
     flex: 0.5;
     width: 100%;
     height: fit-content;
+    white-space: pre-wrap;
 }
 
 .about-description >h2 {

@@ -1,7 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { Snackbar, IconButton, SnackbarContent } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
-import axios from 'axios';
+// import axios from 'axios';
+import emailjs from 'emailjs-com';
+
 import isEmail from 'validator/lib/isEmail';
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -16,6 +18,7 @@ import {
     FaInstagram,
     FaGitlab,
     FaMediumM,
+    FaLink,
 } from 'react-icons/fa';
 import { AiOutlineSend, AiOutlineCheckCircle } from 'react-icons/ai';
 import { FiPhone, FiAtSign } from 'react-icons/fi';
@@ -35,6 +38,7 @@ function Contacts() {
     const [message, setMessage] = useState('');
 
     const [success, setSuccess] = useState(false);
+    const [sending, setSending] = useState(false);
     const [errMsg, setErrMsg] = useState('');
 
     const { theme } = useContext(ThemeContext);
@@ -132,30 +136,37 @@ function Contacts() {
     const handleContactForm = (e) => {
         e.preventDefault();
 
+        setSuccess(false);
+
         if (name && email && message) {
             if (isEmail(email)) {
                 const responseData = {
-                    name: name,
-                    email: email,
+                    from_name: name,
+                    reply_to: email,
                     message: message,
                 };
 
-                axios.post(contactsData.sheetAPI, responseData).then((res) => {
-                    console.log('success');
-                    setSuccess(true);
-                    setErrMsg('');
+                setSending(true);
+                emailjs.send(process.env.REACT_APP_EMAIL_SERVICE_ID, process.env.REACT_APP_EMAIL_TEMPLATE_ID, responseData, process.env.REACT_APP_EMAIL_USER_ID)
+                    .then((result) => {
+                        setSuccess(true);
+                        setSending(false);
+                        setErrMsg('');
 
-                    setName('');
-                    setEmail('');
-                    setMessage('');
-                    setOpen(false);
-                });
+                        setName('');
+                        setEmail('');
+                        setMessage('');
+                        setOpen(false);
+                    }, (error) => {
+                        setSending(false);
+                        setErrMsg(error.text);
+                    });
             } else {
-                setErrMsg('Invalid email');
+                setErrMsg('Invalid email address');
                 setOpen(true);
             }
         } else {
-            setErrMsg('Enter all the fields');
+            setErrMsg('Please enter all the fields');
             setOpen(true);
         }
     };
@@ -167,13 +178,13 @@ function Contacts() {
             style={{ backgroundColor: theme.secondary }}
         >
             <div className='contacts--container'>
-                <h1 style={{ color: theme.primary }}>Contacts</h1>
+                <h1 style={{ color: theme.primary }}>Contact Me</h1>
                 <div className='contacts-body'>
                     <div className='contacts-form'>
                         <form onSubmit={handleContactForm}>
                             <div className='input-container'>
                                 <label htmlFor='Name' className={classes.label}>
-                                    Name
+                                    Full Name
                                 </label>
                                 <input
                                     placeholder='John Doe'
@@ -208,7 +219,7 @@ function Contacts() {
                                     Message
                                 </label>
                                 <textarea
-                                    placeholder='Type your message....'
+                                    placeholder='How can I serve you?'
                                     value={message}
                                     onChange={(e) => setMessage(e.target.value)}
                                     type='text'
@@ -222,7 +233,7 @@ function Contacts() {
                                     type='submit'
                                     className={classes.submitBtn}
                                 >
-                                    <p>{!success ? 'Send' : 'Sent'}</p>
+                                    <p>{sending ? 'Sending...' : (!success ? 'Send' : 'Sent')}</p>
                                     <div className='submit-icon'>
                                         <AiOutlineSend
                                             className='send-icon'
@@ -303,26 +314,17 @@ function Contacts() {
                                 {contactsData.phone}
                             </p>
                         </a>
-                        <div className='personal-details'>
+
+                        {contactsData.address && (<div className='personal-details'>
                             <div className={classes.detailsIcon}>
                                 <HiOutlineLocationMarker />
                             </div>
                             <p style={{ color: theme.tertiary }}>
                                 {contactsData.address}
                             </p>
-                        </div>
+                        </div>)}
 
                         <div className='socialmedia-icons'>
-                            {socialsData.twitter && (
-                                <a
-                                    href={socialsData.twitter}
-                                    target='_blank'
-                                    rel='noreferrer'
-                                    className={classes.socialIcon}
-                                >
-                                    <FaTwitter aria-label='Twitter' />
-                                </a>
-                            )}
                             {socialsData.github && (
                                 <a
                                     href={socialsData.github}
@@ -331,6 +333,16 @@ function Contacts() {
                                     className={classes.socialIcon}
                                 >
                                     <FaGithub aria-label='GitHub' />
+                                </a>
+                            )}
+                            {socialsData.twitter && (
+                                <a
+                                    href={socialsData.twitter}
+                                    target='_blank'
+                                    rel='noreferrer'
+                                    className={classes.socialIcon}
+                                >
+                                    <FaTwitter aria-label='Twitter' />
                                 </a>
                             )}
                             {socialsData.linkedIn && (
@@ -421,6 +433,16 @@ function Contacts() {
                                     className={classes.socialIcon}
                                 >
                                     <FaGitlab aria-label='GitLab' />
+                                </a>
+                            )}
+                            {socialsData.website && (
+                                <a
+                                    href={socialsData.website}
+                                    target='_blank'
+                                    rel='noreferrer'
+                                    className={classes.socialIcon}
+                                >
+                                    <FaLink aria-label='Website' />
                                 </a>
                             )}
                         </div>

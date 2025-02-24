@@ -9,11 +9,12 @@ import { headerData } from '../../data/headerData';
 import { socialsData } from '../../data/socialsData';
 
 import {
-    FaTwitter,
+    // FaTwitter,
     FaLinkedin,
     FaGithub,
     FaYoutube,
     FaBlogger,
+    FaLink,
 } from 'react-icons/fa';
 
 function Landing() {
@@ -101,19 +102,6 @@ function Landing() {
                                 />
                             </a>
                         )}
-                        {socialsData.twitter && (
-                            <a
-                                href={socialsData.twitter}
-                                target='_blank'
-                                rel='noreferrer'
-                            >
-                                <FaTwitter
-                                    className='landing--social'
-                                    style={{ color: theme.secondary }}
-                                    aria-label='Twitter'
-                                />
-                            </a>
-                        )}
                         {socialsData.youtube && (
                             <a
                                 href={socialsData.youtube}
@@ -137,6 +125,19 @@ function Landing() {
                                     className='landing--social'
                                     style={{ color: theme.secondary }}
                                     aria-label='Blogger'
+                                />
+                            </a>
+                        )}
+                        {socialsData.website && (
+                            <a
+                                href={socialsData.website}
+                                target='_blank'
+                                rel='noreferrer'
+                            >
+                                <FaLink
+                                    className='landing--social'
+                                    style={{ color: theme.secondary }}
+                                    aria-label='Website'
                                 />
                             </a>
                         )}
