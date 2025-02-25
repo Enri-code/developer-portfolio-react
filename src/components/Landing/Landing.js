@@ -17,6 +17,10 @@ import {
     FaLink,
 } from 'react-icons/fa';
 
+import {
+    FaUpwork
+} from 'react-icons/fa6';
+
 function Landing() {
     const { theme, drawerOpen } = useContext(ThemeContext);
 
@@ -138,6 +142,19 @@ function Landing() {
                                     className='landing--social'
                                     style={{ color: theme.secondary }}
                                     aria-label='Website'
+                                />
+                            </a>
+                        )}
+                        {socialsData.upwork && (
+                            <a
+                                href={socialsData.upwork}
+                                target='_blank'
+                                rel='noreferrer'
+                            >
+                                <FaUpwork
+                                    className='landing--social'
+                                    style={{ color: theme.secondary }}
+                                    aria-label='Upwork'
                                 />
                             </a>
                         )}
