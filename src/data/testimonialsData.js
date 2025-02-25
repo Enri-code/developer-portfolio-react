@@ -16,7 +16,7 @@ export const testimonialsData = [
         id: 2,
         name: 'Laura Odii',
         title: 'Kurero',
-        text: "TechSalis has been a game changer for our company, developing complex iterations with speed, precision and ease.",
+        text: "Eric has been a game changer for our company, developing complex iterations with speed, precision and ease.",
         image: girl3
     },
     {
