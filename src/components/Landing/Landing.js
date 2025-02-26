@@ -14,7 +14,7 @@ import {
     FaGithub,
     FaYoutube,
     FaBlogger,
-    FaLink,
+    FaGlobe,
 } from 'react-icons/fa';
 
 import {
@@ -80,6 +80,7 @@ function Landing() {
                     style={{ backgroundColor: theme.primary }}
                 >
                     <div className='lcl--content'>
+                    
                         {socialsData.linkedIn && (
                             <a
                                 href={socialsData.linkedIn}
@@ -90,6 +91,19 @@ function Landing() {
                                     className='landing--social'
                                     style={{ color: theme.secondary }}
                                     aria-label='LinkedIn'
+                                />
+                            </a>
+                        )}
+                        {socialsData.upwork && (
+                            <a
+                                href={socialsData.upwork}
+                                target='_blank'
+                                rel='noreferrer'
+                            >
+                                <FaUpwork
+                                    className='landing--social'
+                                    style={{ color: theme.secondary}}
+                                    aria-label='Upwork'
                                 />
                             </a>
                         )}
@@ -138,23 +152,10 @@ function Landing() {
                                 target='_blank'
                                 rel='noreferrer'
                             >
-                                <FaLink
+                                <FaGlobe
                                     className='landing--social'
                                     style={{ color: theme.secondary }}
                                     aria-label='Website'
-                                />
-                            </a>
-                        )}
-                        {socialsData.upwork && (
-                            <a
-                                href={socialsData.upwork}
-                                target='_blank'
-                                rel='noreferrer'
-                            >
-                                <FaUpwork
-                                    className='landing--social'
-                                    style={{ color: theme.secondary }}
-                                    aria-label='Upwork'
                                 />
                             </a>
                         )}

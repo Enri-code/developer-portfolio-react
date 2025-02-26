@@ -35,7 +35,7 @@ export const projectsData = [
     {
         id: 4,
         projectName: 'Real Estate App',
-        projectDesc: 'A demo real estate listings app, focusing on the beautifully intuitive user interface and capabilities of Flutter\'s animations.',
+        projectDesc: 'A real estate listings app, focusing on the beautifully intuitive user interface and capabilities of Flutter\'s animations.',
         tags: ['Flutter', 'Maps SDK'],
         code: 'https://github.com/Enri-code/real-estate-app',
         demo: 'https://drive.google.com/file/d/1xX8UYLlCN3o2N_Cf586B7_-L3Iiq1K23/view?usp=sharing',
@@ -44,7 +44,7 @@ export const projectsData = [
     {
         id: 5,
         projectName: 'Result Processor',
-        projectDesc: 'A demo result processing system for tertiary institutions, designed for desktops and web.',
+        projectDesc: 'Result processing system for tertiary institutions, designed for UNN, supporting Desktop and Web.',
         tags: ['Flutter', 'Python Flask', 'PDF/CSV/XLS'],
         code: 'https://github.com/Enri-code/result-processor',
         // demo: 'https://github.com/Enri-code/result-processor',
@@ -57,7 +57,7 @@ export const projectsData = [
         tags: ['Flutter'],
         code: 'https://drive.google.com/file/d/17FLiz5qa42FgIN2igE0G0LhY9qA3gtK9/view?usp=drive_link',
         demo: 'https://drive.google.com/file/d/17FLiz5qa42FgIN2igE0G0LhY9qA3gtK9/view?usp=drive_link',
-        image: cryptoImg,
+        image: cryptoImg
     },
 
 ]
