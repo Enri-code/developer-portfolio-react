@@ -67,6 +67,7 @@
   margin-right: 7rem;
   font-family: var(--primaryFont);
   font-style: normal;
+  white-space: pre-wrap;
 }
 
 .lcr--content h6 {

@@ -18,7 +18,7 @@ import {
     FaInstagram,
     FaGitlab,
     FaMediumM,
-    FaLink,
+    FaGlobe,
 } from 'react-icons/fa';
 import { AiOutlineSend, AiOutlineCheckCircle } from 'react-icons/ai';
 import { FiPhone, FiAtSign } from 'react-icons/fi';
@@ -442,7 +442,7 @@ function Contacts() {
                                     rel='noreferrer'
                                     className={classes.socialIcon}
                                 >
-                                    <FaLink aria-label='Website' />
+                                    <FaGlobe aria-label='Website' />
                                 </a>
                             )}
                         </div>
